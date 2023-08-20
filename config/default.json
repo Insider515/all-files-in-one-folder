@@ -1,0 +1,5 @@
+{
+    "sourceFolderPath": "your/source/path/folder",
+    "targetFolderPath": "your/target/path/folder",
+    "fileLimit": 0
+}
