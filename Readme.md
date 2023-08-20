@@ -8,7 +8,7 @@ This software is used to collect from a large number of files and subfolders in 
 
 The configuration is stored in the /config/default file.json
 
-/ Key / Type / Usage |
+| Key | Type | Usage |
 |---|---|---|
 | source Folder Path | string | full path to the folder where the program will search for files (in all its subfolders)|
 |target Folder Path | string | full path to the folder where files will be collected|
