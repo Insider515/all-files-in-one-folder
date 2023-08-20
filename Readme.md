@@ -10,9 +10,9 @@ The configuration is stored in the /config/default file.json
 
 | Key | Type | Usage |
 |---|---|---|
-| source Folder Path | string | full path to the folder where the program will search for files (in all its subfolders)|
-|target Folder Path | string | full path to the folder where files will be collected|
-|file Limit|number | if 0 then the operation will be performed with all found files. If you specify a specific number, this number will be used as the number of files that the action will be performed on|
+| sourceFolderPath | string | full path to the folder where the program will search for files (in all its subfolders)|
+|targetFolderPath | string | full path to the folder where files will be collected|
+|fileLimit|number | if 0 then the operation will be performed with all found files. If you specify a specific number, this number will be used as the number of files that the action will be performed on|
 
 Launching via the terminal
 
