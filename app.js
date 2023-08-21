@@ -4,13 +4,12 @@ const path = require('path');
 const config = require('config');
 const app = express();
 
-const sourceFolderPath = config.get("sourceFolderPath"); // Укажите путь к исходной папке
-const targetFolderPath = config.get("targetFolderPath"); // Укажите путь к целевой папке
-const fileLimit = config.get("fileLimit"); // Получаем ограничение из конфига
+const sourceFolderPath = config.get("sourceFolderPath");
+const targetFolderPath = config.get("targetFolderPath");
+const fileLimit = config.get("fileLimit");
 
-let fileCounter = 1; // Счетчик для переименования файлов
+let fileCounter = 1;
 
-// Функция для получения массива файлов из папки и её вложенных папок
 const getFilesRecursively = (sourceDir) => {
     const files = [];
 
@@ -32,14 +31,13 @@ const getFilesRecursively = (sourceDir) => {
     return files;
 };
 
-// Рекурсивная функция для перемещения файлов из папок и их вложений
 const moveFilesRecursively = (sourceDir, targetDir, limit) => {
     const files = getFilesRecursively(sourceDir).slice(0, limit);
 
     files.forEach(file => {
         const fileCounterStr = fileCounter.toString().padStart(3, '0');
         const extname = path.extname(file);
-        const targetFilePath = path.join(targetDir, `${fileCounterStr}${extname}`); // Пример переименования в "001.jpg"
+        const targetFilePath = path.join(targetDir, `${fileCounterStr}${extname}`);
 
         fs.renameSync(file, targetFilePath);
         console.log(`Moved ${file} to ${targetFilePath}`);
@@ -56,15 +54,13 @@ app.get('/movefiles', (req, res) => {
     }
 });
 
-// Рекурсивная функция для копирования файлов из папок и их вложений
 const copyFilesRecursively = (sourceDir, targetDir, limit) => {
     const files = getFilesRecursively(sourceDir).slice(0, limit);
 
     files.forEach(file => {
         const fileCounterStr = fileCounter.toString().padStart(3, '0');
         const extname = path.extname(file);
-        const targetFilePath = path.join(targetDir, `${fileCounterStr}${extname}`); // Пример переименования в "001.jpg"
-
+        const targetFilePath = path.join(targetDir, `${fileCounterStr}${extname}`);
         fs.copyFileSync(file, targetFilePath);
         console.log(`Copied ${file} to ${targetFilePath}`);
         fileCounter++;
